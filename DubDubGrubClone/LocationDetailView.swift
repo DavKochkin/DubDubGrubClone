@@ -14,81 +14,84 @@ struct LocationDetailView: View {
                    GridItem(.flexible())]
     
     var body: some View {
-        NavigationView {
-            VStack {
-                Image("default-banner-asset")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(height: 120)
-                
-                HStack {
-                    Label("123 Main Street", systemImage: "mappin.and.ellipse")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
-                        
-                    Spacer()
-                }
-                .padding(.horizontal)
-                
-                Text("This is a test description. This is a test description. This is a test description. This is a test description. This is a test description.")
-                    .lineLimit(3)
-                    .minimumScaleFactor(0.75)
-                    .padding(.horizontal)
-                
-                ZStack {
-                    Capsule()
-                        .frame(height: 80)
-                        .foregroundStyle(Color(uiColor: .secondarySystemBackground))
-                    
-                    HStack(spacing: 20) {
-                        Button {
-                            
-                        } label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "location.fill")
-                        }
-                        
-                        Link(destination: URL(string: "https://www.apple.com")!, label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "network")
-                        })
-                        
-                        Button {
-                            
-                        } label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
-                        }
-                        
-                        Button {
-                            
-                        } label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
-                        }
-                    }
-                }
-                .padding(.horizontal)
-                
-                Text("Who's Here?")
-                    .bold()
-                    .font(.title2)
-                
-                LazyVGrid(columns: columns, content: {
-                    FirstNameAvatarView(firstName: "Sean")
-                    FirstNameAvatarView(firstName: "John")
-                    FirstNameAvatarView(firstName: "David")
-                    FirstNameAvatarView(firstName: "Margo")
-                    FirstNameAvatarView(firstName: "Ed")
-                    FirstNameAvatarView(firstName: "Kevin")
-                })
+        VStack {
+            Image("default-banner-asset")
+                .resizable()
+                .scaledToFill()
+                .frame(height: 120)
+            
+            HStack {
+                Label("123 Main Street", systemImage: "mappin.and.ellipse")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 
                 Spacer()
             }
-            .navigationTitle("Location Name")
-            .navigationBarTitleDisplayMode(.inline)
+            .padding(.horizontal)
+            
+            Text("This is a test description. This is a test description. This is a test description. This is a test description. This is a test description.")
+                .lineLimit(3)
+                .minimumScaleFactor(0.75)
+                .padding(.horizontal)
+            
+            ZStack {
+                Capsule()
+                    .frame(height: 80)
+                    .foregroundStyle(Color(uiColor: .secondarySystemBackground))
+                
+                HStack(spacing: 20) {
+                    Button {
+                        
+                    } label: {
+                        LocationActionButton(color: .brandPrimary, imageName: "location.fill")
+                    }
+                    
+                    Link(destination: URL(string: "https://www.apple.com")!, label: {
+                        LocationActionButton(color: .brandPrimary, imageName: "network")
+                    })
+                    
+                    Button {
+                        
+                    } label: {
+                        LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
+                    }
+                }
+            }
+            .padding(.horizontal)
+            
+            Text("Who's Here?")
+                .bold()
+                .font(.title2)
+            
+            LazyVGrid(columns: columns, content: {
+                FirstNameAvatarView(firstName: "Sean")
+                FirstNameAvatarView(firstName: "John")
+                FirstNameAvatarView(firstName: "David")
+                FirstNameAvatarView(firstName: "Margo")
+                FirstNameAvatarView(firstName: "Ed")
+                FirstNameAvatarView(firstName: "Kevin")
+                FirstNameAvatarView(firstName: "Kevin")
+                FirstNameAvatarView(firstName: "Kevin")
+                FirstNameAvatarView(firstName: "Kevin")
+            })
+            
+            Spacer()
         }
+        .navigationTitle("Location Name")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    LocationDetailView()
+    NavigationView {
+        LocationDetailView()
+    }
 }
 
 struct LocationActionButton: View {
