@@ -70,8 +70,8 @@
 				0464A20D2B3F3201002D25C2 /* AppTabView.swift */,
 				0464A20F2B3F3259002D25C2 /* LocationMapView.swift */,
 				0464A2112B3F3279002D25C2 /* LocationListView.swift */,
-				0464A2132B3F3287002D25C2 /* ProfileView.swift */,
 				044B2C422B430A4D005AB792 /* LocationDetailView.swift */,
+				0464A2132B3F3287002D25C2 /* ProfileView.swift */,
 			);
 			path = DubDubGrubClone;
 			sourceTree = "<group>";
