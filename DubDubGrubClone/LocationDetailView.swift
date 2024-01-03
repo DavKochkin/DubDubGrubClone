@@ -32,6 +32,7 @@ struct LocationDetailView: View {
             Text("This is a test description. This is a test description. This is a test description. This is a test description. This is a test description.")
                 .lineLimit(3)
                 .minimumScaleFactor(0.75)
+                .frame(height: 70)
                 .padding(.horizontal)
             
             ZStack {
@@ -69,18 +70,19 @@ struct LocationDetailView: View {
                 .bold()
                 .font(.title2)
             
-            LazyVGrid(columns: columns, content: {
-                FirstNameAvatarView(firstName: "Sean")
-                FirstNameAvatarView(firstName: "John")
-                FirstNameAvatarView(firstName: "David")
-                FirstNameAvatarView(firstName: "Margo")
-                FirstNameAvatarView(firstName: "Ed")
-                FirstNameAvatarView(firstName: "Kevin")
-                FirstNameAvatarView(firstName: "Kevin")
-                FirstNameAvatarView(firstName: "Kevin")
-                FirstNameAvatarView(firstName: "Kevin")
-            })
-            
+            ScrollView {
+                LazyVGrid(columns: columns, content: {
+                    FirstNameAvatarView(firstName: "Sean")
+                    FirstNameAvatarView(firstName: "John")
+                    FirstNameAvatarView(firstName: "David")
+                    FirstNameAvatarView(firstName: "Margo")
+                    FirstNameAvatarView(firstName: "Ed")
+                    FirstNameAvatarView(firstName: "Kevin")
+                    FirstNameAvatarView(firstName: "Kevin")
+                    FirstNameAvatarView(firstName: "Kevin")
+                    FirstNameAvatarView(firstName: "Kevin")
+                })
+            }
             Spacer()
         }
         .navigationTitle("Location Name")
