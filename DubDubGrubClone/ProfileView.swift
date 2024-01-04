@@ -52,6 +52,26 @@ struct ProfileView: View {
                 .padding()
             }
             
+            VStack(alignment: .leading, spacing: 6) {
+                Text("Bio: ")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                +
+                Text("\(100 - bio.count)")
+                    .font(.callout)
+                    .foregroundStyle(bio.count <= 100 ? .brandPrimary : Color(.systemPink))
+                +
+                Text(" Characters Remain")
+                    .font(.callout)
+                    .foregroundStyle(.secondary)
+                
+                TextEditor(text: $bio)
+                    .frame(height: 100)
+                    .overlay(RoundedRectangle(cornerRadius: 8)
+                        .stroke(Color.secondary, lineWidth: 1))
+            }
+            .padding(.horizontal, 20)
+            
             Spacer()
         }
         .navigationTitle("Profile")
