@@ -15,10 +15,7 @@ struct LocationDetailView: View {
     
     var body: some View {
         VStack {
-            Image("default-banner-asset")
-                .resizable()
-                .scaledToFill()
-                .frame(height: 120)
+            BannerImage(imageName: "default-banner-asset")
             
             HStack {
                 Label("123 Main Street", systemImage: "mappin.and.ellipse")
@@ -116,7 +113,6 @@ struct LocationActionButton: View {
     }
 }
 
-
 struct FirstNameAvatarView: View {
     
     var firstName: String
@@ -130,5 +126,17 @@ struct FirstNameAvatarView: View {
                 .lineLimit(1)
                 .minimumScaleFactor(0.75)
         }
+    }
+}
+
+struct BannerImage: View {
+    
+    var imageName: String
+    
+    var body: some View {
+        Image(imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(height: 120)
     }
 }
