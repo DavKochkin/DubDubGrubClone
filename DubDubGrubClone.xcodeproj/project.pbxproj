@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043C8F9C2B4978CE00EFB872 /* DDGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8F9B2B4978CE00EFB872 /* DDGLocation.swift */; };
 		044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B2C422B430A4D005AB792 /* LocationDetailView.swift */; };
 		044FA9562B46F83300249478 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9552B46F83300249478 /* LocationCell.swift */; };
 		044FA9582B46F88800249478 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9572B46F88800249478 /* AvatarView.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043C8F9B2B4978CE00EFB872 /* DDGLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGLocation.swift; sourceTree = "<group>"; };
 		044B2C422B430A4D005AB792 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		044FA9552B46F83300249478 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		044FA9572B46F88800249478 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		043C8F9A2B4978B900EFB872 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				043C8F9B2B4978CE00EFB872 /* DDGLocation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		044FA95F2B46FEC100249478 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +131,7 @@
 		0464A1FB2B3F2F32002D25C2 /* DubDubGrubClone */ = {
 			isa = PBXGroup;
 			children = (
+				043C8F9A2B4978B900EFB872 /* Model */,
 				044FA95F2B46FEC100249478 /* Extensions */,
 				044FA9602B46FED700249478 /* Views */,
 				0464A20A2B3F2F73002D25C2 /* DubDubGrubClone.entitlements */,
@@ -214,6 +225,7 @@
 				0464A2102B3F3259002D25C2 /* LocationMapView.swift in Sources */,
 				0464A2122B3F3279002D25C2 /* LocationListView.swift in Sources */,
 				044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */,
+				043C8F9C2B4978CE00EFB872 /* DDGLocation.swift in Sources */,
 				0464A20E2B3F3201002D25C2 /* AppTabView.swift in Sources */,
 				0464A2142B3F3287002D25C2 /* ProfileView.swift in Sources */,
 				044FA95C2B46FB3E00249478 /* View+Ext.swift in Sources */,
