@@ -10,6 +10,8 @@
 		043C8F9C2B4978CE00EFB872 /* DDGLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8F9B2B4978CE00EFB872 /* DDGLocation.swift */; };
 		043C8F9E2B4AD9A000EFB872 /* DDGProfile .swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8F9D2B4AD9A000EFB872 /* DDGProfile .swift */; };
 		043C8FA02B4ADBE400EFB872 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8F9F2B4ADBE400EFB872 /* MockData.swift */; };
+		043C8FA32B4C177000EFB872 /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8FA22B4C177000EFB872 /* CloudKitManager.swift */; };
+		043C8FA52B4C18DD00EFB872 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043C8FA42B4C18DD00EFB872 /* Constants.swift */; };
 		044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B2C422B430A4D005AB792 /* LocationDetailView.swift */; };
 		044FA9562B46F83300249478 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9552B46F83300249478 /* LocationCell.swift */; };
 		044FA9582B46F88800249478 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9572B46F88800249478 /* AvatarView.swift */; };
@@ -30,6 +32,8 @@
 		043C8F9B2B4978CE00EFB872 /* DDGLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGLocation.swift; sourceTree = "<group>"; };
 		043C8F9D2B4AD9A000EFB872 /* DDGProfile .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDGProfile .swift"; sourceTree = "<group>"; };
 		043C8F9F2B4ADBE400EFB872 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		043C8FA22B4C177000EFB872 /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		043C8FA42B4C18DD00EFB872 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		044B2C422B430A4D005AB792 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		044FA9552B46F83300249478 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		044FA9572B46F88800249478 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
@@ -67,6 +71,15 @@
 				043C8F9F2B4ADBE400EFB872 /* MockData.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		043C8FA12B4C173600EFB872 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				043C8FA22B4C177000EFB872 /* CloudKitManager.swift */,
+				043C8FA42B4C18DD00EFB872 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		044FA95F2B46FEC100249478 /* Extensions */ = {
@@ -137,6 +150,7 @@
 		0464A1FB2B3F2F32002D25C2 /* DubDubGrubClone */ = {
 			isa = PBXGroup;
 			children = (
+				043C8FA12B4C173600EFB872 /* Utilities */,
 				043C8F9A2B4978B900EFB872 /* Model */,
 				044FA95F2B46FEC100249478 /* Extensions */,
 				044FA9602B46FED700249478 /* Views */,
@@ -227,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0464A1FD2B3F2F32002D25C2 /* DubDubGrubCloneApp.swift in Sources */,
+				043C8FA52B4C18DD00EFB872 /* Constants.swift in Sources */,
 				044FA95A2B46FB0E00249478 /* CustomModifiers.swift in Sources */,
 				043C8F9E2B4AD9A000EFB872 /* DDGProfile .swift in Sources */,
 				0464A2102B3F3259002D25C2 /* LocationMapView.swift in Sources */,
@@ -236,6 +251,7 @@
 				043C8F9C2B4978CE00EFB872 /* DDGLocation.swift in Sources */,
 				0464A20E2B3F3201002D25C2 /* AppTabView.swift in Sources */,
 				0464A2142B3F3287002D25C2 /* ProfileView.swift in Sources */,
+				043C8FA32B4C177000EFB872 /* CloudKitManager.swift in Sources */,
 				044FA95C2B46FB3E00249478 /* View+Ext.swift in Sources */,
 				044FA9562B46F83300249478 /* LocationCell.swift in Sources */,
 				044FA95E2B46FCFC00249478 /* DDGButton.swift in Sources */,
