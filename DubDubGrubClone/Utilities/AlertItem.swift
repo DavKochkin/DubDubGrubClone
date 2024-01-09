@@ -17,7 +17,7 @@ struct AlertItem: Identifiable {
 struct AlertContext {
     
     // MARK: - MapView Errors
-    static let unableToGetLocations = Alert(title: Text("Location Error"),
+    static let unableToGetLocations = AlertItem(title: Text("Location Error"),
                                             message: Text("Unable to retrieve locations at this time.\nPlease try again."),
                                             dismissButton: .default(Text("")))
 }
