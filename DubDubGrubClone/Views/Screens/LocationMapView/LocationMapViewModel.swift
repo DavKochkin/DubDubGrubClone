@@ -23,6 +23,8 @@ final class LocationMapViewModel: ObservableObject {
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             deviceLocationManager = CLLocationManager()
+        } else {
+            alertItem = AlertContext.locationDisabled
         }
     }
     
@@ -32,10 +34,10 @@ final class LocationMapViewModel: ObservableObject {
         switch deviceLocationManager.authorizationStatus {
         case .notDetermined:
             deviceLocationManager.requestWhenInUseAuthorization()
-//        case .restricted:
-//            // show alert
-//        case .denied:
-//            // show alert
+        case .restricted:
+            alertItem = AlertContext.locationRestricted
+        case .denied:
+            alertItem = AlertContext.locationDenied
         case .authorizedAlways, .authorizedWhenInUse:
             break
         @unknown default:
