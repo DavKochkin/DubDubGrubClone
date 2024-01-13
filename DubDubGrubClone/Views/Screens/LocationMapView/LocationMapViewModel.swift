@@ -7,7 +7,7 @@
 
 import MapKit
 
-final class LocationMapViewModel: ObservableObject {
+final class LocationMapViewModel: NSObject, ObservableObject {
     
     @Published var alertItem: AlertItem?
     @Published var region = MKCoordinateRegion(
@@ -23,12 +23,13 @@ final class LocationMapViewModel: ObservableObject {
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
             deviceLocationManager = CLLocationManager()
+            deviceLocationManager!.delegate = self
         } else {
             alertItem = AlertContext.locationDisabled
         }
     }
     
-    func checkLocationAuthorization() {
+    private func checkLocationAuthorization() {
         guard let deviceLocationManager = deviceLocationManager else { return }
         
         switch deviceLocationManager.authorizationStatus {
@@ -58,5 +59,12 @@ final class LocationMapViewModel: ObservableObject {
                 }
             }
         }
+    }
+}
+
+
+extension LocationMapViewModel: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
     }
 }

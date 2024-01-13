@@ -20,6 +20,7 @@ struct LocationMapView: View {
                 annotationItems: locationManager.locations) { location in
                 MapMarker(coordinate: location.location.coordinate, tint: .brandPrimary1)
             }
+                .accentColor(.grubRed)
                 .ignoresSafeArea()
             
             VStack {
@@ -35,6 +36,8 @@ struct LocationMapView: View {
                   dismissButton: alertItem.dismissButton)
         })
         .onAppear {
+            viewModel.checkIfLocationServicesIsEnabled()
+            
             if locationManager.locations.isEmpty {
                 viewModel.getLocations(for: locationManager)
             }
