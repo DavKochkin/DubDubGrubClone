@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct OnboardView: View {
+    
+    @Binding var isShowingOnboardView: Bool
+    
     var body: some View {
         VStack {
             HStack {
                 Spacer()
                 Button {
-                    
+                    isShowingOnboardView = false
                 } label: {
                    XDismissButton()
                 }
+                .padding()
             }
             
             Spacer()
@@ -45,7 +49,7 @@ struct OnboardView: View {
 }
 
 #Preview {
-    OnboardView()
+    OnboardView(isShowingOnboardView: .constant(true))
 }
 
 struct OnboardInfoView: View {
