@@ -62,9 +62,27 @@ struct ProfileView: View {
             }
         }
         .navigationTitle("Profile")
+        .toolbar {
+            Button {
+                dismissKeyboard()
+            } label: {
+                Image(systemName: "keyboard.chevron.compact.down")
+            }
+        }
         .sheet(isPresented: $isShowingPhotoPicker) {
             PhotoPicker(image: $avatar)
         }
+    }
+    
+    func isValidProfile() -> Bool {
+        guard !firstName.isEmpty,
+              !lastName.isEmpty,
+              !companyName.isEmpty,
+              !bio.isEmpty,
+              avatar != PlaceholderImage.avatar,
+              bio.count < 100 else { return false }
+                
+                return true
     }
 }
 
