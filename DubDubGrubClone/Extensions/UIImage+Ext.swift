@@ -11,13 +11,12 @@ import UIKit
 extension UIImage {
     
     func convertToCKAsset() -> CKAsset? {
-        
         // Get our apps base document directory url
         guard let urlPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             print("Document Directory url came back nil")
             return nil
         }
-        
+
         // Append some unique identifier for our profile image
         let fileUrl = urlPath.appendingPathComponent("selectedAvatarImage")
         
