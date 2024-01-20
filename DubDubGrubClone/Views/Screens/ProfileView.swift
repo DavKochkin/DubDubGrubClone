@@ -107,14 +107,33 @@ struct ProfileView: View {
         profileRecord[DDGProfile.kAvatar]      = avatar.convertToCKAsset()
         
         // Get our UserRecordId from the container
-        
-        // Get UserRecord from the public database
-        
-        // Create reference on UserRecord to the DDGProfile we created
-        
-        // Create a CKOperation  to save our User and Profile Records
-        
-        
+        CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            // Get UserRecord from the public database
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                // Create reference on UserRecord to the DDGProfile we created
+                userRecord["userProfile"] = CKRecord.Reference(recordID: profileRecord.recordID,
+                                                               action: .none)
+                // Create a CKOperation  to save our User and Profile Records
+                let operation = CKModifyRecordsOperation(recordsToSave: [userRecord, profileRecord])
+                
+                operation.modifyRecordsCompletionBlock = { savedRecords, _, error in
+                    guard let savedRecords = savedRecords, error == nil else {
+                        print(error!.localizedDescription)
+                        return
+                    }
+                    print(savedRecords)
+                }
+                CKContainer.default().publicCloudDatabase.add(operation)
+            }
+        }
     }
 }
 
