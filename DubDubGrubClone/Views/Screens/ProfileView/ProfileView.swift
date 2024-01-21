@@ -26,12 +26,8 @@ struct ProfileView: View {
                     .onTapGesture { viewModel.isShowingPhotoPicker = true }
                     
                     VStack(spacing: 1) {
-                        TextField.init("First Name", text: $viewModel.firstName)
-                            .profileNameStyle()
-                        
-                        TextField.init("Last Name", text: $viewModel.lastName)
-                            .profileNameStyle()
-                        
+                        TextField.init("First Name", text: $viewModel.firstName) .profileNameStyle()
+                        TextField.init("Last Name", text: $viewModel.lastName).profileNameStyle()
                         TextField.init("Company Name", text: $viewModel.companyName)
                     }
                     .padding(.trailing, 16)

@@ -36,13 +36,7 @@ final class ProfileViewModel: ObservableObject {
             return
         }
         // Create our CKRecord from the profile view
-        let profileRecord = CKRecord(recordType: RecordType.profile)
-        
-        profileRecord[DDGProfile.kFirstName]   = firstName
-        profileRecord[DDGProfile.kLastName]    = lastName
-        profileRecord[DDGProfile.kCompanyName] = companyName
-        profileRecord[DDGProfile.kBio]         = bio
-        profileRecord[DDGProfile.kAvatar]      = avatar.convertToCKAsset()
+        let profileRecord = createProfileRecord()
         
         // Get our UserRecordId from the container
         CKContainer.default().fetchUserRecordID { recordID, error in
@@ -107,5 +101,17 @@ final class ProfileViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    private func createProfileRecord() -> CKRecord {
+        let profileRecord = CKRecord(recordType: RecordType.profile)
+        
+        profileRecord[DDGProfile.kFirstName]   = firstName
+        profileRecord[DDGProfile.kLastName]    = lastName
+        profileRecord[DDGProfile.kCompanyName] = companyName
+        profileRecord[DDGProfile.kBio]         = bio
+        profileRecord[DDGProfile.kAvatar]      = avatar.convertToCKAsset()
+        
+        return profileRecord
     }
 }
