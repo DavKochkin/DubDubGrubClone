@@ -22,6 +22,7 @@
 		044FA95C2B46FB3E00249478 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA95B2B46FB3E00249478 /* View+Ext.swift */; };
 		044FA95E2B46FCFC00249478 /* DDGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA95D2B46FCFC00249478 /* DDGButton.swift */; };
 		0462A2E42B595A40001F152C /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462A2E32B595A40001F152C /* UIImage+Ext.swift */; };
+		0462A2E72B5D12A5001F152C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0462A2E62B5D12A5001F152C /* ProfileViewModel.swift */; };
 		04635FA02B56CA0B00D0A7A5 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04635F9F2B56CA0B00D0A7A5 /* PhotoPicker.swift */; };
 		0464A1FD2B3F2F32002D25C2 /* DubDubGrubCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0464A1FC2B3F2F32002D25C2 /* DubDubGrubCloneApp.swift */; };
 		0464A2012B3F2F33002D25C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0464A2002B3F2F33002D25C2 /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		044FA95B2B46FB3E00249478 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		044FA95D2B46FCFC00249478 /* DDGButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DDGButton.swift; sourceTree = "<group>"; };
 		0462A2E32B595A40001F152C /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		0462A2E62B5D12A5001F152C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		04635F9F2B56CA0B00D0A7A5 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		0464A1F92B3F2F32002D25C2 /* DubDubGrubClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DubDubGrubClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0464A1FC2B3F2F32002D25C2 /* DubDubGrubCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DubDubGrubCloneApp.swift; sourceTree = "<group>"; };
@@ -138,11 +140,11 @@
 		044FA9612B46FEE000249478 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				0462A2E52B5D127E001F152C /* ProfileView */,
 				04E6EEC52B4D95DB0060744A /* LocationMapView */,
 				0464A20D2B3F3201002D25C2 /* AppTabView.swift */,
 				0464A2112B3F3279002D25C2 /* LocationListView.swift */,
 				044B2C422B430A4D005AB792 /* LocationDetailView.swift */,
-				0464A2132B3F3287002D25C2 /* ProfileView.swift */,
 				048729A12B5453A0000A4FE7 /* OnboardView.swift */,
 			);
 			path = Screens;
@@ -165,6 +167,15 @@
 				043CBB632B55BBDD0040D4CC /* LogoView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		0462A2E52B5D127E001F152C /* ProfileView */ = {
+			isa = PBXGroup;
+			children = (
+				0464A2132B3F3287002D25C2 /* ProfileView.swift */,
+				0462A2E62B5D12A5001F152C /* ProfileViewModel.swift */,
+			);
+			path = ProfileView;
 			sourceTree = "<group>";
 		};
 		04635F9E2B56C9E200D0A7A5 /* UIKit Components */ = {
@@ -308,6 +319,7 @@
 				043C8F9E2B4AD9A000EFB872 /* DDGProfile .swift in Sources */,
 				04E6EEC72B4D95F60060744A /* LocationMapViewModel.swift in Sources */,
 				0464A2102B3F3259002D25C2 /* LocationMapView.swift in Sources */,
+				0462A2E72B5D12A5001F152C /* ProfileViewModel.swift in Sources */,
 				043C8FA02B4ADBE400EFB872 /* MockData.swift in Sources */,
 				0464A2122B3F3279002D25C2 /* LocationListView.swift in Sources */,
 				044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */,
