@@ -24,7 +24,7 @@ final class ProfileViewModel: ObservableObject {
               !companyName.isEmpty,
               !bio.isEmpty,
               avatar != PlaceholderImage.avatar,
-              bio.count < 100 else { return false }
+              bio.count <= 100 else { return false }
         
         return true
     }

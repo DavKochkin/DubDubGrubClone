@@ -7,9 +7,32 @@
 
 import CloudKit
 
-struct CloudKitManager {
+final class CloudKitManager {
     
-    static func getLocations(completion: @escaping (Result<[DDGLocation], Error>) -> Void) {
+    static let shared = CloudKitManager()
+    
+    private init() {}
+    
+    var userRecord: CKRecord?
+    
+    func getUserRecord() {
+        CKContainer.default().fetchUserRecordID { recordID, error in
+            guard let recordID = recordID, error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) { userRecord, error in
+                guard let userRecord = userRecord, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                self.userRecord = userRecord
+            }
+        }
+    }
+    
+    func getLocations(completion: @escaping (Result<[DDGLocation], Error>) -> Void) {
         let sortDescriptor = NSSortDescriptor(key: DDGLocation.kName, ascending: true)
         let query = CKQuery(recordType: RecordType.location, predicate: NSPredicate(value: true))
         query.sortDescriptors = [sortDescriptor]
