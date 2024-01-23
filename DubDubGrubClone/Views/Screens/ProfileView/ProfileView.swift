@@ -55,7 +55,8 @@ struct ProfileView: View {
                 }
                 .padding(.bottom)
             }
-            LoadingView()
+           
+            if viewModel.isLoading { LoadingView() }
             
         }
         .navigationTitle("Profile")
