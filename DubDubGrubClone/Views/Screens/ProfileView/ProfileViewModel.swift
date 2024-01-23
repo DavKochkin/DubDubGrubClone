@@ -39,7 +39,7 @@ final class ProfileViewModel: ObservableObject {
         // Create our CKRecord from the profile view
         let profileRecord = createProfileRecord()
         guard let userRecord = CloudKitManager.shared.userRecord else {
-            // Show an aler
+            alertItem = AlertContext.noUserRecord
             return
         }
         
@@ -53,10 +53,9 @@ final class ProfileViewModel: ObservableObject {
                 
                 switch result {
                 case .success(_):
-                    // show alert
-                    break
+                    alertItem = AlertContext.createProfileSuccess
                 case .failure(_):
-                    // show alert
+                    alertItem = AlertContext.createProfileFailure
                     break
                 }
             }
@@ -66,7 +65,7 @@ final class ProfileViewModel: ObservableObject {
     func getProfile() {
         
         guard let userRecord = CloudKitManager.shared.userRecord else {
-            // show alert
+            alertItem = AlertContext.noUserRecord
             return
         }
         
@@ -88,6 +87,7 @@ final class ProfileViewModel: ObservableObject {
                     avatar      = profile.createAvatarImage()
                     
                 case .failure(_):
+                    alertItem = AlertContext.unableToGetProfile
                     break
                 }
             }
