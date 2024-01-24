@@ -119,11 +119,14 @@ final class ProfileViewModel: ObservableObject {
         
         showLoadingView()
         CloudKitManager.shared.save(record: profileRecord) { result in
-            switch result {
-            case .success(_):
-                <#code#>
-            case .failure(_):
-                <#code#>
+            DispatchQueue.main.async { [self] in
+                hideLoadingView()
+                switch result {
+                case .success(_):
+                    alertItem = AlertContext.createProfileSuccess
+                case .failure(_):
+                    alertItem = AlertContext.createProfileFailure
+                }
             }
         }
     }
