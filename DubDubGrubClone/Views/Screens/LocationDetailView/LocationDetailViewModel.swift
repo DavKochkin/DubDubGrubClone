@@ -10,6 +10,8 @@ import MapKit
 
 final class LocationDetailViewModel: ObservableObject {
     
+    @Published var alertItem: AlertItem?
+    
     let columns = [GridItem(.flexible()),
                    GridItem(.flexible()),
                    GridItem(.flexible())]
@@ -29,6 +31,10 @@ final class LocationDetailViewModel: ObservableObject {
     }
     
     func callLocation() {
-        
+        guard let url = URL(string: "tel://\(location.phoneNumber)") else {
+            alertItem = AlertContext.invalidPhoneNumber
+            return
+        }
+        UIApplication.shared.open(url)
     }
 }
