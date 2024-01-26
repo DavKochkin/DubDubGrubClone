@@ -39,6 +39,7 @@
 		04E6EEC72B4D95F60060744A /* LocationMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6EEC62B4D95F60060744A /* LocationMapViewModel.swift */; };
 		04E6EECA2B4F12280060744A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E6EEC92B4F12280060744A /* LocationManager.swift */; };
 		04F6107E2B62E67400FDCB7D /* LocationDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6107D2B62E67400FDCB7D /* LocationDetailViewModel.swift */; };
+		04F610802B63E6EA00FDCB7D /* ProfileModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6107F2B63E6EA00FDCB7D /* ProfileModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		04E6EEC62B4D95F60060744A /* LocationMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMapViewModel.swift; sourceTree = "<group>"; };
 		04E6EEC92B4F12280060744A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		04F6107D2B62E67400FDCB7D /* LocationDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewModel.swift; sourceTree = "<group>"; };
+		04F6107F2B63E6EA00FDCB7D /* ProfileModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			children = (
 				044B2C422B430A4D005AB792 /* LocationDetailView.swift */,
 				04F6107D2B62E67400FDCB7D /* LocationDetailViewModel.swift */,
+				04F6107F2B63E6EA00FDCB7D /* ProfileModalView.swift */,
 			);
 			path = LocationDetailView;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				04E6EEC42B4D89880060744A /* AlertItem.swift in Sources */,
 				044FA95C2B46FB3E00249478 /* View+Ext.swift in Sources */,
 				044FA9562B46F83300249478 /* LocationCell.swift in Sources */,
+				04F610802B63E6EA00FDCB7D /* ProfileModalView.swift in Sources */,
 				0493B3782B4FFF9C002CA4BE /* CKAssets+Ext.swift in Sources */,
 				043C8FA72B4C1EA900EFB872 /* CKRecord+Ext.swift in Sources */,
 				04E6EECA2B4F12280060744A /* LocationManager.swift in Sources */,
