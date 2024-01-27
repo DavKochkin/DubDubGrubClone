@@ -14,6 +14,7 @@ final class CloudKitManager {
     private init() {}
     
     var userRecord: CKRecord?
+    var profileRecordID: CKRecord.ID?
     
     func getUserRecord() {
         CKContainer.default().fetchUserRecordID { recordID, error in
@@ -28,6 +29,10 @@ final class CloudKitManager {
                     return
                 }
                 self.userRecord = userRecord
+                
+                if let profileReference = userRecord["userProfile"] as? CKRecord.Reference {
+                    self.profileRecordID = profileReference.recordID
+                }
             }
         }
     }
