@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ProfileModalView: View {
+    
+    @Binding var isShowingProfileModal: Bool
+    var profile: DDGProfile
+    
     var body: some View {
         ZStack {
             VStack {
                 Spacer().frame(height: 60)
-                Text("David Kochkin")
+                Text(profile.firstName + " " + profile.lastName)
                     .bold()
                     .font(.title2)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
                 
-                Text("Test Company")
+                Text(profile.companyName)
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
                     .foregroundStyle(.secondary)
 
-                Text("This is my simple bio. Lets keep typing to see how long we can make it.How does the padding is looking.")
+                Text(profile.bio)
                     .lineLimit(3)
                     .padding()
             }
@@ -33,12 +37,12 @@ struct ProfileModalView: View {
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .overlay(
                 Button {
-                    //dismiss
+                    isShowingProfileModal = false
                 } label: {
                     XDismissButton()
                 }, alignment: .topTrailing )
             
-            Image(uiImage: PlaceholderImage.avatar)
+            Image(uiImage: profile.createAvatarImage())
                 .resizable()
                 .scaledToFill()
                 .frame(width: 110, height: 110)
@@ -50,5 +54,6 @@ struct ProfileModalView: View {
 }
 
 #Preview {
-    ProfileModalView()
+    ProfileModalView(isShowingProfileModal: .constant(true), 
+                     profile: DDGProfile(record: MockData.profile))
 }
