@@ -16,6 +16,7 @@ final class LocationDetailViewModel: ObservableObject {
     @Published var checkInProfiles: [DDGProfile] = []
     @Published var isShowingProfileModal = false
     @Published var isCheckedIn = false
+    @Published var isLoading = false 
     @Published var alertItem: AlertItem?
     
     let columns = [GridItem(.flexible()),
@@ -66,7 +67,7 @@ final class LocationDetailViewModel: ObservableObject {
                 CloudKitManager.shared.save(record: record) { result in
                     DispatchQueue.main.async { [self] in
                         switch result {
-                        case .success(_):
+                        case .success(let record):
                             let profile = DDGProfile(record: record)
                             switch checkInStatus {
                             case .checkedIn:
@@ -90,6 +91,7 @@ final class LocationDetailViewModel: ObservableObject {
     }
     
     func getCheckedInProfiles() {
+        showLoadingView()
         CloudKitManager.shared.getCheckedInProfiles(for: location.id) { [self] result in
             DispatchQueue.main.async {
                 switch result {
@@ -97,8 +99,11 @@ final class LocationDetailViewModel: ObservableObject {
                     checkInProfiles = profiles
                 case .failure(_):
                     print("Error fetching checkedIn profiles")
-                }   
-            }    
+                }
+                hideLoadingView()
+            }
         }
     }
+    private func showLoadingView() { isLoading = true }
+    private func hideLoadingView() { isLoading = false }
 }
