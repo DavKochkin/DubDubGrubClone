@@ -49,7 +49,8 @@ struct LocationDetailView: View {
                         Button {
                             viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
                         } label: {
-                            LocationActionButton(color: .brandPrimary, imageName: "person.fill.checkmark")
+                            LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : .brandPrimary,
+                                                 imageName: viewModel.isCheckedIn ? "person.fill.xmark": "person.fill.checkmark")
                         }
                     }
                 }

@@ -53,13 +53,7 @@ final class LocationDetailViewModel: ObservableObject {
                 switch result {
                 case .success(let record):
                     if let reference = record[DDGProfile.kIsCheckedIn] as? CKRecord.Reference {
-                        if reference.recordID == location.id {
-                            isCheckedIn = true
-                            print("isCheckedIn = true")
-                        } else {
-                            isCheckedIn = false
-                            print("isCheckedIn = false")
-                        }
+                        isCheckedIn = reference.recordID == location.id
                     } else {
                         isCheckedIn = false
                         print("isCheckedIn = false - reference in nil")
