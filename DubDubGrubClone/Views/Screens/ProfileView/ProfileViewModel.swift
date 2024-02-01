@@ -37,6 +37,8 @@ final class ProfileViewModel: ObservableObject {
         return true
     }
     
+    
+    
     func createProfile() {
         
         guard isValidProfile() else {

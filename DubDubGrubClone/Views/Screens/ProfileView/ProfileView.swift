@@ -37,7 +37,23 @@ struct ProfileView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: 6) {
-                    CharactersRemainView(currentCount: viewModel.bio.count)
+                    HStack {
+                        CharactersRemainView(currentCount: viewModel.bio.count)
+                        Spacer()
+                        
+                        
+                        Button {
+                            
+                        } label: {
+                            Label("Check Out", systemImage: "mappin.and.ellipse")
+                                .font(.system(size: 12, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .padding(10)
+                                .frame(height: 28)
+                                .background(Color.grubRed)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                        }
+                    }
                     
                     TextEditor(text: $viewModel.bio)
                         .frame(height: 100)
