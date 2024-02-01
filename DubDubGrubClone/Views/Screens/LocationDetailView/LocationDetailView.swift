@@ -45,12 +45,13 @@ struct LocationDetailView: View {
                         } label: {
                             LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
                         }
-                        
-                        Button {
-                            viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
-                        } label: {
-                            LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : .brandPrimary,
-                                                 imageName: viewModel.isCheckedIn ? "person.fill.xmark": "person.fill.checkmark")
+                        if let _ = CloudKitManager.shared.profileRecordID {
+                            Button {
+                                viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
+                            } label: {
+                                LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : .brandPrimary,
+                                                     imageName: viewModel.isCheckedIn ? "person.fill.xmark": "person.fill.checkmark")
+                            }
                         }
                     }
                 }

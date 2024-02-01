@@ -56,10 +56,9 @@ final class LocationDetailViewModel: ObservableObject {
                         isCheckedIn = reference.recordID == location.id
                     } else {
                         isCheckedIn = false
-                        print("isCheckedIn = false - reference in nil")
                     }
                 case .failure(_):
-                    print("Failed to fetch record")
+                    alertItem = AlertContext.unableToGetCheckInStatus
                 }
             }
         }
@@ -67,9 +66,8 @@ final class LocationDetailViewModel: ObservableObject {
     
     func updateCheckInStatus(to checkInStatus: CheckInStatus) {
         // Retrieve the DDGProfile
-        
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else {
-            //show an aler
+            alertItem = AlertContext.unableToGetProfile
             return
         }
         
@@ -97,15 +95,13 @@ final class LocationDetailViewModel: ObservableObject {
                             }
                             
                             isCheckedIn = checkInStatus == .checkedIn
-                            
-                            print("Checked in/out successed.")
                         case .failure(_):
-                            print("Error saving record.")
+                            alertItem = AlertContext.unableToGetCheckInOrOut
                         }
                     }
                 }
             case .failure(_):
-                print("Error fetching record.")
+                alertItem = AlertContext.unableToGetCheckInOrOut
             }
         }
     }
@@ -113,12 +109,12 @@ final class LocationDetailViewModel: ObservableObject {
     func getCheckedInProfiles() {
         showLoadingView()
         CloudKitManager.shared.getCheckedInProfiles(for: location.id) { [self] result in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 switch result {
                 case .success(let profiles):
                     checkInProfiles = profiles
                 case .failure(_):
-                    print("Error fetching checkedIn profiles")
+                    alertItem = AlertContext.unableToGetCheckInProfiles
                 }
                 hideLoadingView()
             }
