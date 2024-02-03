@@ -10,6 +10,7 @@ import SwiftUI
 struct LocationListView: View {
     
     @EnvironmentObject private var locationManager: LocationManager
+    @StateObject private var viewModel = LocationListViewModel()
     
     var body: some View {
         NavigationView {
@@ -21,16 +22,7 @@ struct LocationListView: View {
                 }
             }
             .navigationTitle("Grub Spots")
-            .onAppear {
-                CloudKitManager.shared.getCheckInProfilesDictionary { result in
-                    switch result {
-                    case .success(let checkedInProfile):
-                        print(checkedInProfile)
-                    case .failure(_):
-                        print("Error getting back dictionary")
-                    }
-                }
-            }
+            .onAppear { viewModel.getCheckInProfilesDictionary()  }
         }
     }
 }
