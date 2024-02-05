@@ -55,6 +55,8 @@ struct LocationMapView: View {
             if locationManager.locations.isEmpty {
                 viewModel.getLocations(for: locationManager)
             }
+            
+            viewModel.getCheckedInCounts()
         }
     }
 }

@@ -6,9 +6,11 @@
 //
 
 import MapKit
+import CloudKit
 
 final class LocationMapViewModel: ObservableObject {
     
+    @Published var checkedInProfiles: [CKRecord.ID: Int] = [:]
     @Published var isShowingDetailView = false
     @Published var alertItem: AlertItem?
     @Published var region = MKCoordinateRegion(
@@ -29,6 +31,20 @@ final class LocationMapViewModel: ObservableObject {
                     locationManager.locations = locations
                 case .failure(_):
                     self.alertItem = AlertContext.unableToGetLocations
+                }
+            }
+        }
+    }
+    
+    func getCheckedInCounts() {
+        CloudKitManager.shared.getCheckInProfilesCount { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let checkedInProfiles):
+                    self.checkedInProfiles = checkedInProfiles
+                case .failure(_):
+                    // show alert
+                    break
                 }
             }
         }
