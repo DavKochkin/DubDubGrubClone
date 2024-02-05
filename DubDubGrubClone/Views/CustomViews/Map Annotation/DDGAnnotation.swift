@@ -10,6 +10,7 @@ import SwiftUI
 struct DDGAnnotation: View {
     
     var location: DDGLocation
+    var number: Int
     
     var body: some View {
         VStack {
@@ -24,13 +25,15 @@ struct DDGAnnotation: View {
                     .clipShape(Circle())
                     .offset(y: -11)
                 
-                Text("99")
-                    .font(.system(size: 11, weight: .bold))
-                    .frame(width: 26, height: 18)
-                    .background(Color.grubRed)
-                    .foregroundStyle(.white)
-                    .clipShape(Capsule())
-                    .offset(x: 20, y: -28)
+                if number > 0 {
+                    Text("\(min(number, 99))")
+                        .font(.system(size: 11, weight: .bold))
+                        .frame(width: 26, height: 18)
+                        .background(Color.grubRed)
+                        .foregroundStyle(.white)
+                        .clipShape(Capsule())
+                        .offset(x: 20, y: -28)
+                }
             }
             
             Text(location.name)
@@ -41,5 +44,5 @@ struct DDGAnnotation: View {
 }
 
 #Preview {
-    DDGAnnotation(location: DDGLocation(record: MockData.location))
+    DDGAnnotation(location: DDGLocation(record: MockData.location), number: 44)
 }

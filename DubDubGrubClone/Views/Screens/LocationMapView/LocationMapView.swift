@@ -20,7 +20,7 @@ struct LocationMapView: View {
                 annotationItems: locationManager.locations) { location in
                 MapAnnotation(coordinate: location.location.coordinate,
                               anchorPoint: CGPoint(x: 0.5, y: 0.75)) {
-                    DDGAnnotation(location: location)
+                    DDGAnnotation(location: location, number: viewModel.checkedInProfiles[location.id, default: 0])
                         .onTapGesture {
                             locationManager.selectedLocation = location
                             viewModel.isShowingDetailView = true
