@@ -16,6 +16,7 @@
 		043CBB642B55BBDD0040D4CC /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CBB632B55BBDD0040D4CC /* LogoView.swift */; };
 		043CBB672B55C2680040D4CC /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043CBB662B55C2680040D4CC /* XDismissButton.swift */; };
 		044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044B2C422B430A4D005AB792 /* LocationDetailView.swift */; };
+		044F475C2B711DCC00FF9DE2 /* AppTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044F475B2B711DCC00FF9DE2 /* AppTabViewModel.swift */; };
 		044FA9562B46F83300249478 /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9552B46F83300249478 /* LocationCell.swift */; };
 		044FA9582B46F88800249478 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9572B46F88800249478 /* AvatarView.swift */; };
 		044FA95A2B46FB0E00249478 /* CustomModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044FA9592B46FB0E00249478 /* CustomModifiers.swift */; };
@@ -55,6 +56,7 @@
 		043CBB632B55BBDD0040D4CC /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		043CBB662B55C2680040D4CC /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
 		044B2C422B430A4D005AB792 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		044F475B2B711DCC00FF9DE2 /* AppTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabViewModel.swift; sourceTree = "<group>"; };
 		044FA9552B46F83300249478 /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		044FA9572B46F88800249478 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		044FA9592B46FB0E00249478 /* CustomModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomModifiers.swift; sourceTree = "<group>"; };
@@ -126,6 +128,15 @@
 			path = Buttons;
 			sourceTree = "<group>";
 		};
+		044F475A2B711DB300FF9DE2 /* AppTabView */ = {
+			isa = PBXGroup;
+			children = (
+				044F475B2B711DCC00FF9DE2 /* AppTabViewModel.swift */,
+				0464A20D2B3F3201002D25C2 /* AppTabView.swift */,
+			);
+			path = AppTabView;
+			sourceTree = "<group>";
+		};
 		044FA95F2B46FEC100249478 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +162,11 @@
 		044FA9612B46FEE000249478 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				044F475A2B711DB300FF9DE2 /* AppTabView */,
 				04834E3F2B6E6BFD00F86770 /* LocationListView */,
 				04F6107C2B62E65A00FDCB7D /* LocationDetailView */,
 				0462A2E52B5D127E001F152C /* ProfileView */,
 				04E6EEC52B4D95DB0060744A /* LocationMapView */,
-				0464A20D2B3F3201002D25C2 /* AppTabView.swift */,
 				048729A12B5453A0000A4FE7 /* OnboardView.swift */,
 			);
 			path = Screens;
@@ -358,6 +369,7 @@
 				043C8FA02B4ADBE400EFB872 /* MockData.swift in Sources */,
 				0464A2122B3F3279002D25C2 /* LocationListView.swift in Sources */,
 				044B2C432B430A4D005AB792 /* LocationDetailView.swift in Sources */,
+				044F475C2B711DCC00FF9DE2 /* AppTabViewModel.swift in Sources */,
 				043C8F9C2B4978CE00EFB872 /* DDGLocation.swift in Sources */,
 				04635FA02B56CA0B00D0A7A5 /* PhotoPicker.swift in Sources */,
 				0464A20E2B3F3201002D25C2 /* AppTabView.swift in Sources */,
