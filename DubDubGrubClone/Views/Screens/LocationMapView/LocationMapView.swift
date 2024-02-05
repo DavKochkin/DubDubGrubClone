@@ -18,7 +18,10 @@ struct LocationMapView: View {
             Map(coordinateRegion: $viewModel.region,
                 showsUserLocation: true,
                 annotationItems: locationManager.locations) { location in
-                MapMarker(coordinate: location.location.coordinate, tint: .brandPrimary1)
+                MapAnnotation(coordinate: location.location.coordinate,
+                              anchorPoint: CGPoint(x: 0.5, y: 0.75)) {
+                    DDGAnnotation(location: location)
+                }
             }
                 .accentColor(.grubRed)
                 .ignoresSafeArea()
