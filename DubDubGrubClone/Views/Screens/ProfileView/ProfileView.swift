@@ -78,6 +78,7 @@ struct ProfileView: View {
             
         }
         .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(DeviceTypes.isiPhone8Standard ? .inline : .automatic)
         .toolbar {
             Button {
                 dismissKeyboard()
