@@ -16,7 +16,7 @@ extension View {
     
     func playHaptic() {
         let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.error)
+        generator.notificationOccurred(.success)
     }
     
     
