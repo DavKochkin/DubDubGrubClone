@@ -34,16 +34,19 @@ struct LocationDetailView: View {
                             viewModel.getDirectionsToLocation()
                         } label: {
                             LocationActionButton(color: .brandPrimary, imageName: "location.fill")
+                                .accessibilityLabel(Text("Get directions"))
                         }
                         
                         Link(destination: URL(string: viewModel.location.websiteURL)!, label: {
                             LocationActionButton(color: .brandPrimary, imageName: "network")
+                                .accessibilityLabel(Text("Go to website"))
                         })
                         
                         Button {
                             viewModel.callLocation()
                         } label: {
                             LocationActionButton(color: .brandPrimary, imageName: "phone.fill")
+                                .accessibilityLabel(Text("Call location"))
                         }
                         if let _ = CloudKitManager.shared.profileRecordID {
                             Button {
@@ -52,6 +55,7 @@ struct LocationDetailView: View {
                             } label: {
                                 LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : .brandPrimary,
                                                      imageName: viewModel.isCheckedIn ? "person.fill.xmark": "person.fill.checkmark")
+                                .accessibilityLabel(Text(viewModel.isCheckedIn ? "Check out of location": "Check into location"))
                             }
                         }
                     }
@@ -61,6 +65,9 @@ struct LocationDetailView: View {
                 Text("Who's Here?")
                     .bold()
                     .font(.title2)
+                    .accessibilityAddTraits(.isHeader)
+                    .accessibilityLabel(Text("Who's Here? \(viewModel.checkInProfiles.count) checked in"))
+                    .accessibilityHint(Text("Bottom section in scrollable"))
                 
                 ZStack {
                     if viewModel.checkInProfiles.isEmpty {
@@ -75,6 +82,8 @@ struct LocationDetailView: View {
                             LazyVGrid(columns: viewModel.columns, content: {
                                 ForEach(viewModel.checkInProfiles) { profile in
                                     FirstNameAvatarView(profile: profile)
+                                        .accessibilityElement(children: .ignore)
+                                        .accessibilityLabel(Text("\(profile.firstName) \(profile.lastName)"))
                                         .onTapGesture {
                                             viewModel.isShowingProfileModal = true
                                         }
@@ -167,6 +176,7 @@ struct BannerImage: View {
             .resizable()
             .scaledToFill()
             .frame(height: 120)
+            .accessibilityHidden(true)
     }
 }
 
