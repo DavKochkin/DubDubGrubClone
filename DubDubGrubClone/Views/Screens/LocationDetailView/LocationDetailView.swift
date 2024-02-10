@@ -85,6 +85,8 @@ struct LocationDetailView: View {
                                 ForEach(viewModel.checkInProfiles) { profile in
                                     FirstNameAvatarView(profile: profile)
                                         .accessibilityElement(children: .ignore)
+                                        .accessibilityAddTraits(.isButton)
+                                        .accessibilityHint(Text("Show's \(profile.firstName) profile pop up."))
                                         .accessibilityLabel(Text("\(profile.firstName) \(profile.lastName)"))
                                         .onTapGesture {
                                             viewModel.selectedProfile = profile
@@ -98,15 +100,15 @@ struct LocationDetailView: View {
                 
                 Spacer()
             }
+            .accessibilityHidden(viewModel.isShowingProfileModal)
             
             if viewModel.isShowingProfileModal {
                 Color(.systemBackground)
                     .ignoresSafeArea()
                     .opacity(0.9)
-//                    .transition(.opacity)
                     .transition(AnyTransition.opacity.animation(.easeInOut(duration: 0.35)))
-//                    .animation(.easeOut)
                     .zIndex(1)
+                    .accessibilityHidden(true)
                 
                 ProfileModalView(isShowingProfileModal: $viewModel.isShowingProfileModal,
                                  profile: viewModel.selectedProfile!)
