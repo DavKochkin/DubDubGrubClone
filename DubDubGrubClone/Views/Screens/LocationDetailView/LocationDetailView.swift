@@ -131,7 +131,7 @@ struct LocationDetailView: View {
 
 #Preview {
     NavigationView {
-        LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.location)))
+        LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle)))
     }
 }
 
