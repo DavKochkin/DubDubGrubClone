@@ -23,19 +23,23 @@ struct AlertContext {
     // MARK: - MapView Errors
     static let unableToGetLocations = AlertItem(title: Text("Location Error"),
                                             message: Text("Unable to retrieve locations at this time.\nPlease try again."),
-                                            dismissButton: .default(Text("")))
+                                            dismissButton: .default(Text("Ok")))
     
     static let locationRestricted   = AlertItem(title: Text("Location Restricted"),
                                             message: Text("Your location is restriced. This may be due to parental controls"),
-                                            dismissButton: .default(Text("")))
+                                            dismissButton: .default(Text("Ok")))
     
     static let locationDenied       = AlertItem(title: Text("Location Denied"),
                                             message: Text("Dub Dub Grub does not have permission to access your location. To change that go to your phone's Settings > Dub Dub Grub > Location"),
-                                            dismissButton: .default(Text("")))
+                                            dismissButton: .default(Text("Ok")))
     
     static let locationDisabled     = AlertItem(title: Text("Location Disabled"),
                                             message: Text("Your phone's location services are disabled. To change that go to your phone's Settings > Privacy > Location Services"),
-                                            dismissButton: .default(Text("")))
+                                            dismissButton: .default(Text("Ok")))
+    
+    static let checkedInCount       = AlertItem(title: Text("Server Error"),
+                                            message: Text("Unable to get the number of people checked into each location. Please check your internet connection and try again."),
+                                            dismissButton: .default(Text("Ok")))
     
     // MARK: - ProfileView Errors
     static let invalidProfile       = AlertItem(title: Text("Invalid Profile"),

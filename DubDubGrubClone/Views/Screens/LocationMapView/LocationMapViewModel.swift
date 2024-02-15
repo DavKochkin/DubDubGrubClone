@@ -42,12 +42,12 @@ extension LocationMapView {
         
         func getCheckedInCounts() {
             CloudKitManager.shared.getCheckInProfilesCount { result in
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [self] in 
                     switch result {
                     case .success(let checkedInProfiles):
                         self.checkedInProfiles = checkedInProfiles
                     case .failure(_):
-                        // show alert
+                        alertItem = AlertContext.checkedInCount
                         break
                     }
                 }
