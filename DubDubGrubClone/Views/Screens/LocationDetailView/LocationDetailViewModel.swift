@@ -24,9 +24,10 @@ final class LocationDetailViewModel: ObservableObject {
                    GridItem(.flexible())]
     
     var location: DDGLocation
-    var selectedProfile: DDGProfile? {
-        didSet { isShowingProfileModal = true }
-    }
+    var buttonColor: Color { isCheckedIn ? .grubRed : .brandPrimary }
+    var buttonImageTitle: String { isCheckedIn ? "person.fill.xmark": "person.fill.checkmark" }
+    var buttonA11yLabel: String { isCheckedIn ? "Check out of location": "Check into location" }
+    var selectedProfile: DDGProfile? { didSet { isShowingProfileModal = true }}
     
     init(location: DDGLocation) {
         self.location = location
