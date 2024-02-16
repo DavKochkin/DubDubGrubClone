@@ -16,7 +16,7 @@ final class LocationDetailViewModel: ObservableObject {
     @Published var checkInProfiles: [DDGProfile] = []
     @Published var isShowingProfileModal = false
     @Published var isCheckedIn = false
-    @Published var isLoading = false 
+    @Published var isLoading = false
     @Published var alertItem: AlertItem?
     
     let columns = [GridItem(.flexible()),
@@ -76,6 +76,7 @@ final class LocationDetailViewModel: ObservableObject {
             return
         }
         
+        showLoadingView()
         CloudKitManager.shared.fetchRecord(with: profileRecordID) { [self] result in
             switch result {
             case .success(let record):
@@ -91,8 +92,10 @@ final class LocationDetailViewModel: ObservableObject {
                 // Save the updated profile to CloudKit
                 CloudKitManager.shared.save(record: record) { result in
                     DispatchQueue.main.async { [self] in
+                        hideLoadingView()
                         switch result {
                         case .success(let record):
+                            HapticManager.playSuccess()
                             let profile = DDGProfile(record: record)
                             switch checkInStatus {
                             case .checkedIn:
@@ -101,7 +104,8 @@ final class LocationDetailViewModel: ObservableObject {
                                 checkInProfiles.removeAll(where: {$0.id == profile.id })
                             }
                             
-                            isCheckedIn = checkInStatus == .checkedIn
+                            isCheckedIn.toggle()
+                            
                         case .failure(_):
                             alertItem = AlertContext.unableToGetCheckInOrOut
                         }
@@ -109,6 +113,7 @@ final class LocationDetailViewModel: ObservableObject {
                 }
                 
             case .failure(_):
+                hideLoadingView()
                 alertItem = AlertContext.unableToGetCheckInOrOut
             }
         }
@@ -133,3 +138,5 @@ final class LocationDetailViewModel: ObservableObject {
     private func showLoadingView() { isLoading = true }
     private func hideLoadingView() { isLoading = false }
 }
+
+

@@ -21,12 +21,14 @@ struct ProfileModalView: View {
                     .font(.title2)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
+                    .padding(.horizontal)
                 
                 Text(profile.companyName)
                     .fontWeight(.semibold)
                     .lineLimit(1)
                     .minimumScaleFactor(0.75)
                     .foregroundStyle(.secondary)
+                    .padding(.horizontal)
                     .accessibilityLabel(Text("Work's at \(profile.companyName)"))
 
                 Text(profile.bio)

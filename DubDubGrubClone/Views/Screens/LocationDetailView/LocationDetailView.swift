@@ -53,12 +53,12 @@ struct LocationDetailView: View {
                         if let _ = CloudKitManager.shared.profileRecordID {
                             Button {
                                 viewModel.updateCheckInStatus(to: viewModel.isCheckedIn ? .checkedOut : .checkedIn)
-                                playHaptic()
                             } label: {
                                 LocationActionButton(color: viewModel.isCheckedIn ? .grubRed : .brandPrimary,
                                                      imageName: viewModel.isCheckedIn ? "person.fill.xmark": "person.fill.checkmark")
+                                .accessibilityLabel(Text(viewModel.isCheckedIn ? "Check out of location": "Check into location"))
                             }
-                            .accessibilityLabel(Text(viewModel.isCheckedIn ? "Check out of location": "Check into location"))
+                            .disabled(viewModel.isLoading)
                         }
                     }
                 }
@@ -97,8 +97,6 @@ struct LocationDetailView: View {
                     }
                     if viewModel.isLoading { LoadingView() }
                 }
-                
-                Spacer()
             }
             .accessibilityHidden(viewModel.isShowingProfileModal)
             
@@ -121,9 +119,7 @@ struct LocationDetailView: View {
             viewModel.getCheckedInProfiles()
             viewModel.getCheckedInStatus()
         }
-        .alert(item: $viewModel.alertItem, content: { alertItem in
-            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
-        })
+        .alert(item: $viewModel.alertItem, content: { $0.alert })
         .navigationTitle(viewModel.location.name)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -135,7 +131,8 @@ struct LocationDetailView: View {
     }
 }
 
-struct LocationActionButton: View {
+
+fileprivate struct LocationActionButton: View {
     
     var color: Color
     var imageName: String
@@ -155,7 +152,8 @@ struct LocationActionButton: View {
     }
 }
 
-struct FirstNameAvatarView: View {
+
+fileprivate struct FirstNameAvatarView: View {
     
     var profile: DDGProfile
     
@@ -171,7 +169,8 @@ struct FirstNameAvatarView: View {
     }
 }
 
-struct BannerImage: View {
+
+fileprivate struct BannerImage: View {
     
     var image: UIImage
     
@@ -184,7 +183,8 @@ struct BannerImage: View {
     }
 }
 
-struct AdressView: View {
+
+fileprivate struct AdressView: View {
     
     var adressString: String
     
@@ -195,7 +195,8 @@ struct AdressView: View {
     }
 }
 
-struct DescriptionView: View {
+
+fileprivate struct DescriptionView: View {
     
     var text: String
     
