@@ -25,6 +25,7 @@ struct LocationListView: View {
             }
             .navigationTitle("Grub Spots")
             .onAppear { viewModel.getCheckInProfilesDictionary()  }
+            .alert(item: $viewModel.alertItem, content: { $0.alert })
         }
     }
 }

@@ -39,7 +39,7 @@ struct LocationCell: View {
                             if index <= 3 {
                                 AvatarView(image: profiles[index].createAvatarImage(), size: 35)
                             } else if index == 4 {
-                                AdditionalProfilesView(number: profiles.count - 4)
+                                AdditionalProfilesView(number: min(profiles.count - 4, 99))
                             }
                         }
                     }

@@ -7,27 +7,31 @@
 
 import CloudKit
 
-final class LocationListViewModel: ObservableObject {
+extension LocationListView {
     
-    @Published var checkedInProfiles: [CKRecord.ID: [DDGProfile]] = [:]
-    
-    func getCheckInProfilesDictionary() {
-        CloudKitManager.shared.getCheckInProfilesDictionary { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let checkedInProfile):
-                    self.checkedInProfiles = checkedInProfile
-                case .failure(_):
-                    print("Error getting back dictionary")
+    final class LocationListViewModel: ObservableObject {
+        @Published var checkedInProfiles: [CKRecord.ID: [DDGProfile]] = [:]
+        @Published var alertItem: AlertItem?
+        
+        func getCheckInProfilesDictionary() {
+            CloudKitManager.shared.getCheckInProfilesDictionary { result in
+                DispatchQueue.main.async { [self] in
+                    switch result {
+                    case .success(let checkedInProfile):
+                        self.checkedInProfiles = checkedInProfile
+                    case .failure(_):
+                        alertItem = AlertContext.unableToGetAllProfiles
+                    }
                 }
             }
         }
-    }
-    
-    func createVoiceOverSummary(for location: DDGLocation) -> String {
-        let  count = checkedInProfiles[location.id, default: []].count
-        let personPlurality = count == 1 ? "person" : "people"
         
-        return "\(location.name) \(count) \(personPlurality) checked in."
+        
+        func createVoiceOverSummary(for location: DDGLocation) -> String {
+            let  count = checkedInProfiles[location.id, default: []].count
+            let personPlurality = count == 1 ? "person" : "people"
+            
+            return "\(location.name) \(count) \(personPlurality) checked in."
+        }
     }
 }
