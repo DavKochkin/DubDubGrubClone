@@ -231,7 +231,9 @@ fileprivate struct AvatarGridView: View {
                     LazyVGrid(columns: viewModel.columns, content: {
                         ForEach(viewModel.checkInProfiles) { profile in
                             FirstNameAvatarView(profile: profile)
-                                .onTapGesture { viewModel.selectedProfile = profile }
+                                .onTapGesture {
+                                    withAnimation { viewModel.selectedProfile = profile }
+                                }
                         }
                     })
                 }
