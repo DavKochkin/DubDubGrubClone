@@ -44,7 +44,7 @@ struct LocationMapView: View {
         }
         .overlay(alignment: .bottomLeading) {
             LocationButton(.currentLocation) {
-                // button tapped
+                viewModel.requestAllowOnceLocationPermission()
             }
             .foregroundStyle(.white)
             .symbolVariant(.fill)
