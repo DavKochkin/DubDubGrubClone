@@ -10,7 +10,7 @@ import CloudKit
 
 extension LocationMapView {
     
-    final class LocationMapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    @MainActor final class LocationMapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         @Published var checkedInProfiles: [CKRecord.ID: Int] = [:]
         @Published var isShowingDetailView = false
@@ -51,18 +51,28 @@ extension LocationMapView {
         
         
         func getLocations(for locationManager: LocationManager) {
-            CloudKitManager.shared.getLocations { [weak self] result in
-                DispatchQueue.main.async {
-                    guard let self = self else { return }
-                    
-                    switch result {
-                    case .success(let locations):
-                        locationManager.locations = locations
-                    case .failure(_):
-                        self.alertItem = AlertContext.unableToGetLocations
-                    }
+            
+            Task {
+                do {
+                    locationManager.locations = try await CloudKitManager.shared.getLocations()
+                } catch {
+                    alertItem = AlertContext.unableToGetLocations
                 }
             }
+            
+            
+//            CloudKitManager.shared.getLocations { [weak self] result in
+//                DispatchQueue.main.async {
+//                    guard let self = self else { return }
+//                    
+//                    switch result {
+//                    case .success(let locations):
+//                        locationManager.locations = locations
+//                    case .failure(_):
+//                        self.alertItem = AlertContext.unableToGetLocations
+//                    }
+//                }
+//            }
         }
         
         
