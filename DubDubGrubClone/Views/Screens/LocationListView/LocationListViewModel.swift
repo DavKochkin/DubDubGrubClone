@@ -14,14 +14,12 @@ extension LocationListView {
         @Published var alertItem: AlertItem?
         
         func getCheckInProfilesDictionary() {
-            CloudKitManager.shared.getCheckInProfilesDictionary { result in
-                DispatchQueue.main.async { [self] in
-                    switch result {
-                    case .success(let checkedInProfile):
-                        self.checkedInProfiles = checkedInProfile
-                    case .failure(_):
-                        alertItem = AlertContext.unableToGetAllProfiles
-                    }
+            
+            Task {
+                do {
+                    checkedInProfiles = try await CloudKitManager.shared.getCheckInProfilesDictionary()
+                } catch {
+                    alertItem = AlertContext.unableToGetAllProfiles
                 }
             }
         }
