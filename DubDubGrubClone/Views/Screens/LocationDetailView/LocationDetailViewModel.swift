@@ -52,19 +52,16 @@ enum CheckInStatus { case checkedIn, checkedOut }
     func getCheckedInStatus() {
         guard let profileRecordID = CloudKitManager.shared.profileRecordID else { return }
         
-        CloudKitManager.shared.fetchRecord(with: profileRecordID) { [self] result in
-            DispatchQueue.main.async { [self] in
-                switch result {
-                case .success(let record):
-                    if let reference = record[DDGProfile.kIsCheckedIn] as? CKRecord.Reference {
-                        isCheckedIn = reference.recordID == location.id
-                    } else {
-                        isCheckedIn = false
-                    }
-                    
-                case .failure(_):
-                    alertItem = AlertContext.unableToGetCheckInStatus
+        Task {
+            do {
+                let record = try await CloudKitManager.shared.fetchRecord(with: profileRecordID)
+                if let reference = record[DDGProfile.kIsCheckedIn] as? CKRecord.Reference {
+                    isCheckedIn = reference.recordID == location.id
+                } else {
+                    isCheckedIn = false
                 }
+            } catch {
+                alertItem = AlertContext.unableToGetCheckInStatus
             }
         }
     }
@@ -78,10 +75,10 @@ enum CheckInStatus { case checkedIn, checkedOut }
         }
         
         showLoadingView()
-        CloudKitManager.shared.fetchRecord(with: profileRecordID) { [self] result in
-            switch result {
-            case .success(let record):
-                // Create a reference to the location
+        
+        Task {
+            do {
+                let record = try await CloudKitManager.shared.fetchRecord(with: profileRecordID)
                 switch checkInStatus {
                 case .checkedIn:
                     record[DDGProfile.kIsCheckedIn] = CKRecord.Reference(recordID: location.id, action: .none)
@@ -90,31 +87,20 @@ enum CheckInStatus { case checkedIn, checkedOut }
                     record[DDGProfile.kIsCheckedIn] = nil
                     record[DDGProfile.kisCheckedInNilCheck] = nil
                 }
-                // Save the updated profile to CloudKit
-                CloudKitManager.shared.save(record: record) { result in
-                    DispatchQueue.main.async { [self] in
-                        hideLoadingView()
-                        switch result {
-                        case .success(let record):
-                            HapticManager.playSuccess()
-                            let profile = DDGProfile(record: record)
-                            switch checkInStatus {
-                            case .checkedIn:
-                                checkInProfiles.append(profile)
-                            case .checkedOut:
-                                checkInProfiles.removeAll(where: {$0.id == profile.id })
-                            }
-                            
-                            isCheckedIn.toggle()
-                            
-                        case .failure(_):
-                            alertItem = AlertContext.unableToGetCheckInOrOut
-                        }
-                    }
+                
+                let savedRecord = try await CloudKitManager.shared.save(record: record)
+                HapticManager.playSuccess()
+                let profile = DDGProfile(record: savedRecord)
+                switch checkInStatus {
+                case .checkedIn:
+                    checkInProfiles.append(profile)
+                case .checkedOut:
+                    checkInProfiles.removeAll(where: {$0.id == profile.id })
                 }
                 
-            case .failure(_):
+                isCheckedIn.toggle()
                 hideLoadingView()
+            } catch {
                 alertItem = AlertContext.unableToGetCheckInOrOut
             }
         }
