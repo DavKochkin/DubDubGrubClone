@@ -25,7 +25,8 @@ struct LocationListView: View {
             }
             .navigationTitle("Grub Spots")
             .listStyle(.plain)
-            .onAppear { viewModel.getCheckInProfilesDictionary()  }
+            .task { await viewModel.getCheckInProfilesDictionary()  }
+            .refreshable { await viewModel.getCheckInProfilesDictionary() }
             .alert(item: $viewModel.alertItem, content: { $0.alert })
         }
     }
