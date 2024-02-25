@@ -10,7 +10,7 @@ import CloudKit
 
 extension LocationMapView {
     
-    @MainActor final class LocationMapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    final class LocationMapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         @Published var checkedInProfiles: [CKRecord.ID: Int] = [:]
         @Published var isShowingDetailView = false
@@ -50,6 +50,7 @@ extension LocationMapView {
         }
         
         
+        @MainActor
         func getLocations(for locationManager: LocationManager) {
             
             Task {
@@ -76,6 +77,7 @@ extension LocationMapView {
         }
         
         
+        @MainActor
         func getCheckedInCounts() {
             Task {
                 do {

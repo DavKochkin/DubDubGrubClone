@@ -16,8 +16,9 @@ struct DDGAnnotation: View {
         VStack {
             ZStack {
                 MapBalloon()
+                    .fill(Color.brandPrimary.gradient)
                     .frame(width: 100, height: 70)
-                    .foregroundStyle(.brandPrimary)
+//                    .foregroundStyle(.brandPrimary)
                 
                 Image(uiImage: location.createSquareImage())
                     .resizable()
