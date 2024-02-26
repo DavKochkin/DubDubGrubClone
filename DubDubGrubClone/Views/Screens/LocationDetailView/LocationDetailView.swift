@@ -42,7 +42,7 @@ struct LocationDetailView: View {
 }
 
 #Preview {
-    NavigationView {
+    NavigationStack {
         LocationDetailView(viewModel: LocationDetailViewModel(location: DDGLocation(record: MockData.chipotle)))
     }
 }
@@ -56,7 +56,12 @@ fileprivate struct LocationActionButton: View {
     var body: some View {
         ZStack {
             Circle()
-                .foregroundStyle(color)
+                .fill(Color
+                    .brandPrimary
+                    .gradient
+                    .shadow(.inner(color: .black.opacity(0.5), radius: 5))
+                )
+//                .foregroundStyle(color)
                 .frame(width: 60, height: 60)
             
             Image(systemName: imageName)
